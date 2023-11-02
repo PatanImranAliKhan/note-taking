@@ -1,0 +1,41 @@
+.unselectedchat {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    place-items: center;
+    text-align: center;
+}
+
+.unselectedchat .heading {
+    font-size: 40px;
+    letter-spacing: 2px;
+}
+
+.unselectedchat img {
+    width: 60%;
+}
+
+.unselectedchat .footer {
+    position: absolute;
+    bottom: 0px;
+    padding: 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .unselectedchat img {
+        width: 80%;
+    }
+    .unselectedchat p {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .unselectedchat p {
+        font-size: 13px;
+    }
+}

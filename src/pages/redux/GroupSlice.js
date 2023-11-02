@@ -8,7 +8,7 @@ export const groupSlice = createSlice({
     name: 'groups',
     initialState: initializeData,
     reducers: {
-        initiazeData: (state, action) => {
+        initializeAllGroupsData: (state, action) => {
             state.groups = action.payload
         },
         addGroup: (state, action) => {
@@ -20,6 +20,12 @@ export const groupSlice = createSlice({
     }
 })
 
-export const { initiazeData, addGroup, pushGroupData } = groupSlice.actions;
+export const getGroupNames = (state) => {
+    return state.groups.map((group) => {
+        return group.name;
+    })
+}
+
+export const { initializeAllGroupsData, addGroup, pushGroupData } = groupSlice.actions;
 
 export default groupSlice.reducer;

@@ -1,0 +1,17 @@
+.notes {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+.chatbox {
+    width: 100%;
+    background-color: #F7ECDC;
+}
+
+@media screen and (max-width: 568px) {
+    .notes {
+        grid-template-columns: 1fr;
+    }
+}
