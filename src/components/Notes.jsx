@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { initializeAllGroupsData } from '../pages/redux/GroupSlice'
 import GroupsList from '../pages/GroupsList'
 import ChatWindow from '../pages/ChatWindow'
 import UnSelectedChatWindow from '../pages/UnSelectedChatWindow'
@@ -8,8 +6,8 @@ import '../styles/notes.css'
 
 const Notes = () => {
 
-    const [selectedGroup, setSelectedGroup] = useState(-1);
-    const dispatch = useDispatch();
+    const [selectedIndex, setselectedIndex] = useState("-1");
+    const [groups, setgroups] = useState([])
 
     useEffect(() => {
         InitializeLocalData();
@@ -18,20 +16,37 @@ const Notes = () => {
     const InitializeLocalData = () => {
         const localdata = JSON.parse(localStorage.getItem("notesapp"));
         if (localdata !== null) {
-            dispatch(initializeAllGroupsData({ payload: localdata }));
+            setgroups(localdata)
         }
+    }
+
+    const addNewGroup = (newGroupData)=>{
+        var grps = [...groups]
+        grps.push(newGroupData)
+        localStorage.setItem("notesapp", JSON.stringify(grps))
+    }
+
+    const addDataIntogroup = (data)=> {
+        var grps = [...groups]
+        grps[selectedIndex]["messages"].push(data);
+        localStorage.setItem("notesapp", JSON.stringify(grps))
     }
 
     return (
         <div className='notes'>
             <GroupsList
-                selectedGroup={selectedGroup}
-                setSelectedGroup={setSelectedGroup}
+                groups={groups}
+                addNewGroup={addNewGroup}
+                selectedIndex={selectedIndex}
+                setselectedIndex={setselectedIndex}
             />
             <div className='chatbox'>
                 {
-                    selectedGroup !== -1 ?
-                        <ChatWindow />
+                    selectedIndex !== "-1" ?
+                        <ChatWindow 
+                            data={groups[selectedIndex]}
+                            addDataIntogroup={addDataIntogroup}
+                        />
                         :
                         <UnSelectedChatWindow />
                 }

@@ -1,45 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import '../styles/grouplist.css'
 import Addgroup from './Addgroup'
 import Popup from 'reactjs-popup';
-import { useDispatch, useSelector } from 'react-redux';
-import { addGroup } from './redux/GroupSlice';
 
-const GroupsList = () => {
+const GroupsList = ({ groups, selectedIndex, setselectedIndex, addNewGroup }) => {
 
-  const [groupNames, setGroupNames] = useState(["abkwdbuy", "dvuq", "wjhvdusyvd", "kbhdckbshdkjcyw", "jsvhdcsvdkc", "i"])
+  const [groupNames, setGroupNames] = useState([])
 
   const [newGroupName, setnewGroupName] = useState("")
   const [selectedColor, setselectedColor] = useState("")
-
-  const dispatch = useDispatch();
-  const groups = useSelector((state) => state.group)
-
-  useEffect(() => {
-    initialiGroupNames()
-  }, [])
-
-
 
   const handleAddGroup = () => {
     if (newGroupName === "" || selectedColor === "") {
       return;
     }
-    dispatch(addGroup({
+    addNewGroup({
       "groupName": newGroupName,
-      "color": selectedColor
-    }));
+      "color": selectedColor,
+      "messages":[]
+    });
 
     const allgroupNames = [...groupNames];
     allgroupNames.push(newGroupName);
     setGroupNames(allgroupNames)
-  }
-
-  const initialiGroupNames = () => {
-    const grps = groups["groups"];
-    if (grps !== null || grps !== undefined) {
-      setGroupNames(grps.map((grp) => { return grp.groupName }))
-    }
   }
 
   return (
@@ -71,10 +54,13 @@ const GroupsList = () => {
         </div>
         <div className='groups'>
           {
-            groupNames.map((group, i) => {
-              return <div className='group_data'>
-                <div className='group_logo' style={{ backgroundColor: 'blue' }}>{group.slice(0, Math.min(2, group.length))}</div>
-                <span className='groupname'>{group}</span>
+            groups.map((group, i) => {
+              return <div key={i} className='group_data' style={{ backgroundColor: selectedIndex === group.groupName ? '#F7ECDC' : 'None' }}
+                onClick={() => { setselectedIndex(i) }}>
+                <div className='group_logo' style={{ backgroundColor: group.color }}>
+                  {group.groupName.slice(0, Math.min(2, group.groupName.length))}
+                </div>
+                <span className='groupname'>{group.groupName}</span>
               </div>
             })
           }

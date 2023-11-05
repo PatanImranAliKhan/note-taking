@@ -15,7 +15,7 @@ export const groupSlice = createSlice({
             state.groups.push(action.payload);
         },
         pushGroupData: (state, action) => {
-            state.groups[action.ind].push(action.payload);
+            state.groups[action.groupName].push(action.payload);
         }
     }
 })
