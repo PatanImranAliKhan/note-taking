@@ -5,8 +5,6 @@ import Popup from 'reactjs-popup';
 
 const GroupsList = ({ groups, selectedIndex, setselectedIndex, addNewGroup }) => {
 
-  const [groupNames, setGroupNames] = useState([])
-
   const [newGroupName, setnewGroupName] = useState("")
   const [selectedColor, setselectedColor] = useState("")
 
@@ -19,10 +17,6 @@ const GroupsList = ({ groups, selectedIndex, setselectedIndex, addNewGroup }) =>
       "color": selectedColor,
       "messages":[]
     });
-
-    const allgroupNames = [...groupNames];
-    allgroupNames.push(newGroupName);
-    setGroupNames(allgroupNames)
   }
 
   return (
@@ -55,7 +49,7 @@ const GroupsList = ({ groups, selectedIndex, setselectedIndex, addNewGroup }) =>
         <div className='groups'>
           {
             groups.map((group, i) => {
-              return <div key={i} className='group_data' style={{ backgroundColor: selectedIndex === group.groupName ? '#F7ECDC' : 'None' }}
+              return <div key={i} className='group_data' style={{ backgroundColor: i === selectedIndex ? '#F7ECDC' : '#fff' }}
                 onClick={() => { setselectedIndex(i) }}>
                 <div className='group_logo' style={{ backgroundColor: group.color }}>
                   {group.groupName.slice(0, Math.min(2, group.groupName.length))}

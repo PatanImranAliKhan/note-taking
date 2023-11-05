@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
+import '../styles/chat.css'
+import sendImg from '../assets/sendlogo.png'
 
 const ChatInput = ({ addDataIntogroup }) => {
 
   const [message, setmessage] = useState("")
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+    "November", "December"];
 
   function getActualTimeInAMPM(date) {
     var hours = date.getHours();
@@ -24,15 +27,20 @@ const ChatInput = ({ addDataIntogroup }) => {
       "date": calcDate,
       "time": getActualTimeInAMPM(d)
     })
+    setmessage("")
   }
 
   return (
-    <div>
-      <textarea
-        placeholder='Enter your text here...........'
-        onChange={(e) => { setmessage(e.target.value) }}
-      >{message}</textarea>
-      <button onClick={() => { handleAddData() }}></button>
+    <div className='chatinputcontent'>
+      <div className='maininputsection'>
+        <textarea type="text" className='chatinputtextarea'
+          placeholder='Enter your text here...........'
+          onChange={(e) => { setmessage(e.target.value) }}
+        >{message}</textarea>
+        <div className='sendlogo' onClick={() => { handleAddData() }}>
+          <img src={sendImg} alt="" />
+        </div>
+      </div>
     </div>
   )
 }

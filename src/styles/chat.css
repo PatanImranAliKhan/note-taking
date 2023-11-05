@@ -1,23 +1,44 @@
 .chatwindow {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .chatwindow .chatnavdiv {
-    width: 100%;
-    height: 12%;
+  width: 100%;
+  height: 12%;
 }
 
 .chatwindow .chatcontentdiv {
-    width: 100%;
-    height: 65%;
+  width: 100%;
+  height: 68%;
+  overflow: scroll;
+}
+
+.chatcontentdiv::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .chatwindow .chatinputdiv {
-    width: 100%;
-    height: 20%;
+  width: 100%;
+  height: 20%;
 }
 
 .unselectedchat {
@@ -50,29 +71,29 @@
   height: 100%;
   display: flex;
   flex-direction: row;
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   width: 100%;
 }
 
 .chatnavcontent {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    place-items: center;
-    position: relative;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  position: relative;
 }
 
 .backspan {
-    border: none;
-    text-decoration: none;
-    background-color: none;
-    display: none;
-    justify-content: center;
-    place-items: center;
-    margin: 0px 25px;
-    font-size: 25px;
-  }
+  border: none;
+  text-decoration: none;
+  background-color: none;
+  display: none;
+  justify-content: center;
+  place-items: center;
+  margin: 0px 25px;
+  font-size: 25px;
+}
 
 .group_logo {
   min-height: 60px;
@@ -86,8 +107,8 @@
 }
 
 .groupnamespan {
-    font-size: 18px;
-    font-weight: bold;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 768px) {
@@ -107,4 +128,59 @@
   .backspan {
     display: flex;
   }
+}
+
+.chatcontentbox {
+  padding: 30px;
+}
+
+.datetimedisplay {
+    font-size: 15px;
+}
+
+.chatmessages {
+  width: 95%;
+  margin: auto;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  margin-top: 20px;
+  padding: 0px;
+}
+
+.chatinputcontent {
+  width: 100%;
+  height: 100%;
+  background-color: #e8e8e8;
+  position: relative;
+}
+
+.maininputsection {
+  position: absolute;
+  width: 95%;
+  left: 20px;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  margin: auto;
+}
+
+.maininputsection textarea {
+  resize: none;
+}
+
+.chatinputtextarea {
+  width: 100%;
+  height: 80%;
+  font-size: 17px;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.sendlogo {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
 }

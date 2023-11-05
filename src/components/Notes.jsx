@@ -23,18 +23,21 @@ const Notes = () => {
     const addNewGroup = (newGroupData)=>{
         var grps = [...groups]
         grps.push(newGroupData)
+        setgroups(grps)
         localStorage.setItem("notesapp", JSON.stringify(grps))
     }
 
     const addDataIntogroup = (data)=> {
         var grps = [...groups]
         grps[selectedIndex]["messages"].push(data);
+        setgroups(grps)
         localStorage.setItem("notesapp", JSON.stringify(grps))
     }
 
     return (
         <div className='notes'>
             <GroupsList
+                className="gpl"
                 groups={groups}
                 addNewGroup={addNewGroup}
                 selectedIndex={selectedIndex}

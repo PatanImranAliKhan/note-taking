@@ -10,6 +10,10 @@
     background-color: #F7ECDC;
 }
 
+.gpl {
+    height: 100vh;
+}
+
 @media screen and (max-width: 568px) {
     .notes {
         grid-template-columns: 1fr;
