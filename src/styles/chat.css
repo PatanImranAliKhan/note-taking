@@ -192,3 +192,9 @@
   right: 10px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 568px) {
+  .chatcontentbox {
+    padding: 10px 10px;
+  }
+}
