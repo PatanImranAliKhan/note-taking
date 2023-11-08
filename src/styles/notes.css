@@ -14,8 +14,22 @@
     height: 100vh;
 }
 
+.unselchtwin {
+    display: flex;
+}
+
 @media screen and (max-width: 568px) {
     .notes {
         grid-template-columns: 1fr;
+    }
+
+    .chatbox {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .unselchtwin {
+        display: none;
     }
 }

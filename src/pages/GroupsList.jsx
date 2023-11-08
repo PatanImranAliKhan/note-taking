@@ -15,49 +15,51 @@ const GroupsList = ({ groups, selectedIndex, setselectedIndex, addNewGroup }) =>
     addNewGroup({
       "groupName": newGroupName,
       "color": selectedColor,
-      "messages":[]
+      "messages": []
     });
   }
 
   return (
-    <div className='groupslist'>
-      <h1>Pocket Notes</h1>
-      <div className='section1'>
-        <div>
-          <Popup trigger=
-            {<button className='createnotes' style={{ cursor: 'pointer' }}><i className="fa-solid fa-plus"></i> Create Notes group</button>}
-            modal nested>
+    <div className='maingrouplistsection'>
+      <div className='groupslist'>
+        <h1>Pocket Notes</h1>
+        <div className='section1'>
+          <div>
+            <Popup trigger=
+              {<button className='createnotes' style={{ cursor: 'pointer' }}><i className="fa-solid fa-plus"></i> Create Notes group</button>}
+              modal nested>
+              {
+                Creategroup => (
+                  <div className='modal'>
+                    <div className='content'>
+                      <Addgroup
+                        setnewGroupName={setnewGroupName} newGroupName={newGroupName} setselectedColor={setselectedColor}
+                      />
+                    </div>
+                    <div>
+                      <button className='createbuttoninmodal' onClick=
+                        {() => { handleAddGroup(); Creategroup() }}>
+                        Create
+                      </button>
+                    </div>
+                  </div>
+                )
+              }
+            </Popup>
+          </div>
+          <div className='groups'>
             {
-              Creategroup => (
-                <div className='modal'>
-                  <div className='content'>
-                    <Addgroup
-                      setnewGroupName={setnewGroupName} newGroupName={newGroupName} setselectedColor={setselectedColor}
-                    />
+              groups.map((group, i) => {
+                return <div key={i} className='group_data' style={{ backgroundColor: i === selectedIndex ? '#F7ECDC' : '#fff' }}
+                  onClick={() => { setselectedIndex(i) }}>
+                  <div className='group_logo' style={{ backgroundColor: group.color }}>
+                    {group.groupName.slice(0, Math.min(2, group.groupName.length))}
                   </div>
-                  <div>
-                    <button className='createbuttoninmodal' onClick=
-                      {() => { handleAddGroup(); Creategroup() }}>
-                      Create
-                    </button>
-                  </div>
+                  <span className='groupname'>{group.groupName}</span>
                 </div>
-              )
+              })
             }
-          </Popup>
-        </div>
-        <div className='groups'>
-          {
-            groups.map((group, i) => {
-              return <div key={i} className='group_data' style={{ backgroundColor: i === selectedIndex ? '#F7ECDC' : '#fff' }}
-                onClick={() => { setselectedIndex(i) }}>
-                <div className='group_logo' style={{ backgroundColor: group.color }}>
-                  {group.groupName.slice(0, Math.min(2, group.groupName.length))}
-                </div>
-                <span className='groupname'>{group.groupName}</span>
-              </div>
-            })
-          }
+          </div>
         </div>
       </div>
     </div>

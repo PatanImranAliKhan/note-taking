@@ -121,12 +121,20 @@
 }
 
 @media screen and (max-width: 568px) {
+  .unselectedchat {
+    display: none;
+  }
+  
   .unselectedchat p {
     font-size: 13px;
   }
 
   .backspan {
     display: flex;
+  }
+
+  .chatnavcontent {
+    width: 98%;
   }
 }
 

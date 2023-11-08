@@ -49,9 +49,10 @@ const Notes = () => {
                         <ChatWindow 
                             data={groups[selectedIndex]}
                             addDataIntogroup={addDataIntogroup}
+                            setselectedIndex={setselectedIndex}
                         />
                         :
-                        <UnSelectedChatWindow />
+                        <UnSelectedChatWindow className="unselchtwin"/>
                 }
             </div>
         </div>

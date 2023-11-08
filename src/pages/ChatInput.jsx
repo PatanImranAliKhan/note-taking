@@ -36,7 +36,8 @@ const ChatInput = ({ addDataIntogroup }) => {
         <textarea type="text" className='chatinputtextarea'
           placeholder='Enter your text here...........'
           onChange={(e) => { setmessage(e.target.value) }}
-        >{message}</textarea>
+          value={message}
+        ></textarea>
         <div className='sendlogo' onClick={() => { handleAddData() }}>
           <img src={sendImg} alt="" />
         </div>
